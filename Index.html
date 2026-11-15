@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MizoFlix - L & H Production</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+  body{background:#0a0a0a;color:white}
+  header{background:#000;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
+  .logo{font-size:24px;font-weight:bold;color:#e50914}
+  .logo span{color:#f5c518}
+  input{padding:10px;border-radius:20px;border:none;width:200px;outline:none}
+  .hero{background:linear-gradient(to right,rgba(0,0,0,.9),rgba(0,0,0,.2)),url('https://via.placeholder.com/1200x400');background-size:cover;padding:80px 20px}
+  .hero h1{font-size:42px;margin-bottom:10px}
+  .hero p{color:#ddd;margin-bottom:20px}
+  .btn{background:#e50914;color:white;padding:12px 25px;border:none;border-radius:5px;font-size:16px;cursor:pointer}
+  h2{padding:20px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:15px;padding:0 20px 40px}
+  .card{background:#1a1a1a;border-radius:10px;overflow:hidden;cursor:pointer}
+  .card img{width:100%;height:230px;object-fit:cover}
+  .card div{padding:10px}
+  .card h3{font-size:15px;margin-bottom:5px}
+  .card p{font-size:12px;color:#aaa}
+  .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.9);justify-content:center;align-items:center;flex-direction:column;z-index:20}
+  .modal iframe{width:90%;max-width:800px;height:450px;border:none}
+  .close{margin-top:15px;background:white;color:black;padding:10px 20px;border:none;border-radius:5px;cursor:pointer}
+  footer{text-align:center;padding:20px;color:#666;font-size:13px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Mizo<span>Flix</span> <small style="color:white;font-size:12px">by L & H Production</small></div>
+  <input type="text" id="search" placeholder="Movie zawng rawh..." onkeyup="searchMovie()">
+</header>
+
+<div class="hero">
+  <h1>THE BODYGUARD 2</h1>
+  <p>L & H Production | Mizo Movie Thar Ber</p>
+  <button class="btn" onclick="playMovie('THE BODYGUARD 2')">▶ En Nghâl</button>
+</div>
+
+<h2>Movie Thar Te</h2>
+<div class="grid" id="movieGrid">
+  <div class="card" onclick="playMovie('THE BODYGUARD 2')">
+    <img src="https://via.placeholder.com/300x450?text=THE+BODYGUARD+2">
+    <div><h3>THE BODYGUARD 2</h3><p>Action | 2026</p></div>
+  </div>
+  <div class="card" onclick="playMovie('DANGEROUS HERO Part 1')">
+    <img src="https://via.placeholder.com/300x450?text=DANGEROUS+HERO+1">
+    <div><h3>DANGEROUS HERO 1</h3><p>Action | 2025</p></div>
+  </div>
+  <div class="card" onclick="playMovie('DANGEROUS HERO Part 2')">
+    <img src="https://via.placeholder.com/300x450?text=DANGEROUS+HERO+2">
+    <div><h3>DANGEROUS HERO 2</h3><p>Action | 2025</p></div>
+  </div>
+  <div class="card" onclick="playMovie('DANGEROUS HERO Part 3')">
+    <img src="https://via.placeholder.com/300x450?text=DANGEROUS+HERO+3">
+    <div><h3>DANGEROUS HERO 3</h3><p>Action | 2026</p></div>
+  </div>
+</div>
+
+<div class="modal" id="modal">
+  <h2 id="movieTitle" style="margin-bottom:15px"></h2>
+  <p style="margin-bottom:15px;color:#aaa">Hetah hian i YouTube / Video link i dah dawn nia</p>
+  <iframe id="player" src="" allowfullscreen></iframe>
+  <button class="close" onclick="closeModal()">Close</button>
+</div>
+
+<footer>L & H Production © 2026 | MizoFlix - Mizo Movie Platform</footer>
+
+<script>
+function searchMovie(){
+  let q=document.getElementById('search').value.toLowerCase();
+  let cards=document.querySelectorAll('.card');
+  cards.forEach(c=>{
+    let t=c.innerText.toLowerCase();
+    c.style.display=t.includes(q)?'block':'none';
+  });
+}
+function playMovie(title){
+  document.getElementById('movie
